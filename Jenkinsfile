@@ -16,5 +16,16 @@ pipeline {
         echo 'Deploying....'
       }
     }
+	
+	stage('Deploy to prod') {
+	when {
+	expression {
+		currentBuild.result == null || currentBuild.result == 'SUCCESS' ①
+		}
+		}
+	steps {
+	sh 'make publish'
+}
+}	
   }
 }
