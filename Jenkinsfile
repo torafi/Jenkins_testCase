@@ -16,7 +16,12 @@ pipeline {
         echo 'Deploying....'
       }
     }
-	
+	stage ('approval') {
+		
+		steps {
+        echo 'Send approval email....'
+      }
+		}
 	stage('Deploy to prod') {
 	when {
 	expression {
