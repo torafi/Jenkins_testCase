@@ -10,7 +10,7 @@ pipeline {
     stage('SIT') {
       steps {
 	    echo 'Deploying to SIT env'
-		bat 'E:\Sample_Code\deploy_to_tomcat.bat'	    	  
+		bat 'E:\\Sample_Code\\deploy_to_tomcat.bat'	    	  
         echo 'Testing..'
       }
     }
