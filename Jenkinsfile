@@ -4,6 +4,7 @@ pipeline {
     stage('Build') {
       steps {
         echo 'Building..'
+		cmd 'java -version'
       }
     }
     stage('SIT') {
