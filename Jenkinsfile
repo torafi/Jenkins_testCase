@@ -10,13 +10,7 @@ pipeline {
     stage('SIT') {
       steps {
 	    echo 'Deploying to SIT env'
-		
-	    bat  'copy E:\Sample_Code\sample.war E:\Education\Tomcat\apache-tomcat-9.0.16-windows-x64\apache-tomcat-9.0.16\webapps\'
-		bat  'E:\Education\Tomcat\apache-tomcat-9.0.16-windows-x64\apache-tomcat-9.0.16\bin\shutdown.bat'
-		bat  'timeout 60'
-		bat  'E:\Education\Tomcat\apache-tomcat-9.0.16-windows-x64\apache-tomcat-9.0.16\bin\startup.bat'
-		bat  'timeout 60'
-		  
+		bat 'E:\Sample_Code\deploy_to_tomcat.bat'	    	  
         echo 'Testing..'
       }
     }
