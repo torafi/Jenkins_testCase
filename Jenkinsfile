@@ -4,7 +4,7 @@ pipeline {
     stage('Build') {
       steps {
         echo 'Building..'
-		cmd 'java -version'
+		bat 'java -version'
       }
     }
     stage('SIT') {
