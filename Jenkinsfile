@@ -30,7 +30,9 @@ pipeline {
         echo 'Testing..'
       }
     }
-    parallel {
+	stage ("Different Test stages"){
+	
+	parallel {
                 stage('Branch A') {
                     agent {
                         label "for-branch-a"
@@ -65,6 +67,9 @@ pipeline {
                     }
                 }
             }
+	
+	}
+    
 	stage ('approval') {
 		
 		steps {
