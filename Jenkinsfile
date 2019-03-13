@@ -20,6 +20,9 @@ pipeline {
     }
   stages {
     stage('Build') {
+	steps {
+		echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
+		}
       steps {
         echo 'Building..'
 		bat 'java -version'
@@ -32,29 +35,8 @@ pipeline {
         echo 'Testing..'
       }
     }
-	stage ("Different Test stages"){
 	
-	parallel {
-                stage('Branch A') {
-                    agent {
-                        label "for-branch-a"
-                    }
-                    steps {
-                        echo "On Branch A"
-                    }
-                }
-                stage('Branch B') {
-                    agent {
-                        label "for-branch-b"
-                    }
-                    steps {
-                        echo "On Branch B"
-                    }
-                }
-           
-            }
 	
-	}
     
 	stage ('approval') {
 		
