@@ -22,11 +22,11 @@ pipeline {
     stage('Build') {
 	steps {
 		echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
-		}
-      steps {
-        echo 'Building..'
+		
+		echo 'Building..'
 		bat 'java -version'
-      }
+		}
+      
     }
     stage('SIT') {
       steps {
