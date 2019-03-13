@@ -1,5 +1,8 @@
 pipeline {
   agent any
+  environment {
+	JENKINS_URL = 'Dummy_URL'
+	}
   triggers { 
   pollSCM('H */4 * * 1-5')
   }
@@ -22,7 +25,11 @@ pipeline {
     stage('Build') {
 	steps {
 		echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
-		
+		echo "Hello ${params.PERSON}"
+        echo "Biography: ${params.BIOGRAPHY}"
+        echo "Toggle: ${params.TOGGLE}"
+        echo "Choice: ${params.CHOICE}"
+        echo "Password: ${params.PASSWORD}"
 		echo 'Building..'
 		bat 'java -version'
 		}
@@ -35,16 +42,14 @@ pipeline {
         echo 'Testing..'
       }
     }
-	
-	
-    
+	    
 	stage ('approval') {
 		
 		steps {
         echo 'Send approval email....'
       }
 		}
-	stage('Deploy to prod') {
+	stage('Deploy to Pre prod') {
 	when {
 	expression {
 		currentBuild.result == null || currentBuild.result == 'SUCCESS' 
@@ -55,18 +60,6 @@ pipeline {
 }
 }	
 
-stage('Example') {
-            steps {
-                echo "Hello ${params.PERSON}"
 
-                echo "Biography: ${params.BIOGRAPHY}"
-
-                echo "Toggle: ${params.TOGGLE}"
-
-                echo "Choice: ${params.CHOICE}"
-
-                echo "Password: ${params.PASSWORD}"
-            }
-        }
   }
 }
